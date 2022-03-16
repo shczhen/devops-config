@@ -81,32 +81,32 @@ tasks:
         - jenkinsID: coveralls-token-ticdc
           key: TICDC_COVERALLS_TOKEN
 
-    - taskName: "dm-gosec" 
-      checkerName: "gosec-check" 
-      params:  
-        shellScript: |
-            gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 dm/... || true
-        reportDir: results.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-      resources:  
-          requests:
-              memory: "2000Mi"
-              cpu: "1000m"
-          limits:
-              memory: "8000Mi"
-              cpu: "4000m"
+    # - taskName: "dm-gosec" 
+    #   checkerName: "gosec-check" 
+    #   params:  
+    #     shellScript: |
+    #         gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 dm/... || true
+    #     reportDir: results.xml
+    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+    #   resources:  
+    #       requests:
+    #           memory: "2000Mi"
+    #           cpu: "1000m"
+    #       limits:
+    #           memory: "8000Mi"
+    #           cpu: "4000m"
 
-    - taskName: "cdc-gosec" 
-      checkerName: "gosec-check" 
-      params:  
-        shellScript: |
-            gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 -exclude-dir=dm ./... || true
-        reportDir: results.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-      resources:  
-          requests:
-              memory: "2000Mi"
-              cpu: "1000m"
-          limits:
-              memory: "8000Mi"
-              cpu: "4000m"
+    # - taskName: "cdc-gosec" 
+    #   checkerName: "gosec-check" 
+    #   params:  
+    #     shellScript: |
+    #         gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 -exclude-dir=dm ./... || true
+    #     reportDir: results.xml
+    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+    #   resources:  
+    #       requests:
+    #           memory: "2000Mi"
+    #           cpu: "1000m"
+    #       limits:
+    #           memory: "8000Mi"
+    #           cpu: "4000m"
