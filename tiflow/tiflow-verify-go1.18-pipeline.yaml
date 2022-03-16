@@ -1,20 +1,21 @@
-pipelineName: tiflow-verify-pipeline 
+pipelineName: tiflow-verify-go1.18-pipeline 
 repo: pingcap/tiflow
 defaultRef: master 
 triggers:
   pullRequest:
       onBranch:
       - "master"
-      - "release-*"
+      - "release-6.0"
       onComment:
       - "/verify"
+      context: jenkins-ticdc/verify
 tasks:
     - taskName: "tiflow-lint" 
       checkerName: "lint-check" 
       params:  
         shellScript: |
             make check
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "1000Mi"
@@ -29,7 +30,7 @@ tasks:
         shellScript: |
             make build
         outputDir : "bin/"
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "8000Mi"
@@ -45,7 +46,7 @@ tasks:
             make dm_unit_test_in_verify_ci
         utReport: dm-junit-report.xml
         covReport: dm-coverage.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "8000Mi"
@@ -66,7 +67,7 @@ tasks:
             make unit_test_in_verify_ci
         utReport: cdc-junit-report.xml
         covReport: cdc-coverage.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "8000Mi"
@@ -86,7 +87,7 @@ tasks:
         shellScript: |
             gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 dm/... || true
         reportDir: results.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "2000Mi"
@@ -101,7 +102,7 @@ tasks:
         shellScript: |
             gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 -exclude-dir=dm ./... || true
         reportDir: results.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "2000Mi"
