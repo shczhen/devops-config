@@ -14,7 +14,7 @@ tasks:
         outputDir: "bin/"
       retry: 1   
       timeout: 10 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "2000Mi"
@@ -29,7 +29,7 @@ tasks:
         shellScript: |
             gocyclo -over 20 -avg -ignore "_test|pb.go" ./ | tee repo_cyclo.log  
       timeout: 10 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "1000Mi"
@@ -45,7 +45,7 @@ tasks:
             gosec -exclude-generated -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 ./...
         reportDir: results.xml
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "1000Mi"
@@ -70,7 +70,7 @@ tasks:
         covReport: coverage_report/*.coverage
         coverageRate: 50  
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "4000Mi"
@@ -101,7 +101,7 @@ tasks:
         utReport: test.xml
         covReport: coverage.xml 
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "4000Mi"
@@ -127,7 +127,7 @@ tasks:
         utReport: test.xml
         covReport: coverage.xml
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "4000Mi"
@@ -143,7 +143,7 @@ tasks:
             golangci-lint run --out-format=junit-xml -v ./... > golangci-lint-report.xml
         reportDir: golangci-lint-report.xml
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "4000Mi"
@@ -164,7 +164,7 @@ tasks:
         utReport: test.xml
         covReport: coverage.xml
       timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "4000Mi"
@@ -178,7 +178,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_common_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -192,7 +192,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_common_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -206,7 +206,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_campatibility_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -220,7 +220,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_copr_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -234,7 +234,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_ddl_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -248,7 +248,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_mybatis
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -263,7 +263,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_sqllogic_test_1
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -277,7 +277,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_sqllogic_test_2
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -291,7 +291,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_tics_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -305,7 +305,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_cdc_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
@@ -319,7 +319,7 @@ tasks:
       params: 
         itJobName: tidb_ghpr_integration_br_test
       timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
               memory: "100Mi"
