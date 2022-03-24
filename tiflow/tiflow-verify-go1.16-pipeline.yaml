@@ -42,12 +42,10 @@ tasks:
               cpu: "4000m"
 
     - taskName: "dm-ut" 
-      checkerName: "ut-check" 
+      checkerName: "common-check" 
       params:  
         shellScript: |
-            make dm_unit_test_in_verify_ci
-        utReport: dm-junit-report.xml
-        covReport: dm-coverage.xml
+            make dm_unit_test
       image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
       resources:  
           requests:
@@ -56,19 +54,12 @@ tasks:
           limits:
               memory: "30000Mi"
               cpu: "16000m"
-      credentials:
-        - jenkinsID: codecov-token-ticdc
-          key: TICDC_CODECOV_TOKEN
-        - jenkinsID: coveralls-token-ticdc
-          key: TICDC_COVERALLS_TOKEN
 
     - taskName: "cdc-ut" 
-      checkerName: "ut-check" 
+      checkerName: "common-check" 
       params:  
         shellScript: |
-            make unit_test_in_verify_ci
-        utReport: cdc-junit-report.xml
-        covReport: cdc-coverage.xml
+            make unit_test
       image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
       resources:  
           requests:
@@ -77,11 +68,6 @@ tasks:
           limits:
               memory: "30000Mi"
               cpu: "16000m"
-      credentials:
-        - jenkinsID: codecov-token-ticdc
-          key: TICDC_CODECOV_TOKEN
-        - jenkinsID: coveralls-token-ticdc
-          key: TICDC_COVERALLS_TOKEN
 
     - taskName: "dm-gosec" 
       checkerName: "gosec-check" 
