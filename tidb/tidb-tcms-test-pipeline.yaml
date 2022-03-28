@@ -10,12 +10,4 @@ tasks:
       checkerName: "tcms-plan-check" 
       params:  
         plans: "test_infra_tidb_001@main"
-      timeout: 1500
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-      resources:  
-          requests:
-              memory: "100Mi"
-              cpu: "100m"
-          limits:
-              memory: "100Mi"
-              cpu: "100m"
+      timeout: 3000
