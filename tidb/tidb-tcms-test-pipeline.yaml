@@ -1,0 +1,13 @@
+pipelineName: tidb-tcms-test-pipeline 
+repo: pingcap/tidb 
+defaultRef: master 
+triggers:
+    crons:
+    - cronString: "15 0 * * *" 
+      defaultRef: "master"
+tasks:
+    - taskName: "tcms-test" 
+      checkerName: "tcms-plan-check" 
+      params:  
+        plans: "test_infra_tidb_001@main"
+      timeout: 3000
