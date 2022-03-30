@@ -89,7 +89,7 @@ tasks:
       params: 
         shellScript: |
             cd ..
-            go get -u gotest.tools/gotestsum
+            go install gotest.tools/gotestsum
             cd -
             export log_level=debug
             cd tools/check
@@ -115,7 +115,7 @@ tasks:
       params: 
         shellScript: |
             cd ..
-            go get -u gotest.tools/gotestsum
+            go install gotest.tools/gotestsum
             cd -
             export log_level=debug
             cd tools/check
