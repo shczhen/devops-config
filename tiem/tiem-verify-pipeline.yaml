@@ -70,17 +70,17 @@ tasks:
               memory: "2000Mi"
               cpu: "1000m"
 
-    - taskName: "tiem-gosec" 
-      checkerName: "gosec-check" 
-      params:  
-        shellScript: |
-            gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 ./... || true
-        reportDir: results.xml
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
-      resources:  
-          requests:
-              memory: "8000Mi"
-              cpu: "4000m"
-          limits:
-              memory: "8000Mi"
-              cpu: "4000m"
+    # - taskName: "tiem-gosec" 
+    #   checkerName: "gosec-check" 
+    #   params:  
+    #     shellScript: |
+    #         gosec -fmt=junit-xml -out=results.xml -stdout -verbose=text -exclude=G103,G104,G204,G304,G307,G401,G404,G501,G505,G601 ./... || true
+    #     reportDir: results.xml
+    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.16:latest"  
+    #   resources:  
+    #       requests:
+    #           memory: "8000Mi"
+    #           cpu: "4000m"
+    #       limits:
+    #           memory: "8000Mi"
+    #           cpu: "4000m"
