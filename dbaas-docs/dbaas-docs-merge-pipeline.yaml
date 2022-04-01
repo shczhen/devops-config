@@ -1,15 +1,15 @@
-pipelineName: dbaas-docs-merge-pipeline 
+pipelineName: dbaas-docs-merge-pipeline
 repo: pingcap/dbaas-docs
-defaultRef: master 
+defaultRef: master
 triggers:
   push:
       onBranch:
       - "master"
       - "release-*"
 tasks:
-    - taskName: "dbaas-docs-build-pdf" 
-      checkerName: "common-check" 
-      params:  
+    - taskName: "dbaas-docs-build-pdf"
+      checkerName: "common-check"
+      params:
         shellScript: |
           sudo pip3 install boto3
           sudo pip3 install awscli
@@ -19,7 +19,7 @@ tasks:
           scripts/generate_pdf.sh
           sudo bash -c 'echo "222.222.95.49 uc.qbox.me" >> /etc/hosts';
           if [ "${TARGET_BRANCH}" = "master" ]; then
-            python3 scripts/upload.py output.pdf tidbcloud-public-preview-en-manual.pdf;
+            python3 scripts/upload.py output.pdf tidbcloud-en-manual.pdf;
           fi
       credentials:
         - jenkinsID: docs-cn-aws-ak
@@ -37,7 +37,7 @@ tasks:
         - jenkinsID: docs-cn-qiniu-bn
           key: QINIU_BUCKET_NAME
       image: "hub.pingcap.net/jenkins/docs-cn-checker:v0.0.1"
-      resources:  
+      resources:
           requests:
               memory: "1000Mi"
               cpu: "500m"
