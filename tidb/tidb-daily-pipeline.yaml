@@ -52,7 +52,7 @@ tasks:
               cpu: "8000m"
           limits:
               memory: "16000Mi"
-              cpu: "16000m"
+              cpu: "32000m"
 
     - taskName: "tidb-ut" 
       checkerName: "ut-cov-check" 
