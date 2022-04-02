@@ -48,10 +48,10 @@ tasks:
       image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
-              memory: "4000Mi"
+              memory: "12000Mi"
               cpu: "8000m"
           limits:
-              memory: "8000Mi"
+              memory: "16000Mi"
               cpu: "16000m"
 
     - taskName: "tidb-ut" 
