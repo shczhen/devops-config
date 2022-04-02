@@ -13,7 +13,7 @@ tasks:
             make
         outputDir: "bin/"
       retry: 1   
-      timeout: 10 
+      timeout: 20 
       image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
