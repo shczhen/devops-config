@@ -73,8 +73,8 @@ tasks:
       image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
-              memory: "4000Mi"
-              cpu: "2000m"
+              memory: "16000Mi"
+              cpu: "8000m"
           limits:
               memory: "32000Mi"
               cpu: "16000m"
