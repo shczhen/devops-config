@@ -149,7 +149,7 @@ tasks:
               memory: "16000Mi"
               cpu: "8000m"
           limits:
-              memory: "20000Mi"
+              memory: "32000Mi"
               cpu: "20000m"
 
     - taskName: "tidb-race-log" 
