@@ -1,5 +1,5 @@
 pipelineName: dbaas-docs-merge-pipeline
-repo: pingcap/dbaas-docs
+repo: tidbcloud/dbaas-docs
 defaultRef: master
 triggers:
   push:
