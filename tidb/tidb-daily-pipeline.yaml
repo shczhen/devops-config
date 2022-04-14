@@ -215,19 +215,21 @@ tasks:
               memory: "200Mi"
               cpu: "400m"
 
-    - taskName: "tidb-intergration-copr-test" 
-      checkerName: "jenkins-it-trigger-check" 
-      params: 
-        itJobName: tidb_ghpr_integration_copr_test
-      timeout: 120 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-      resources:  
-          requests:
-              memory: "100Mi"
-              cpu: "200m"
-          limits:
-              memory: "200Mi"
-              cpu: "400m"
+    # TODO: enable this job when copr-test fixed (currently unstable)
+    # ichn-hu is working on it
+    # - taskName: "tidb-intergration-copr-test" 
+    #   checkerName: "jenkins-it-trigger-check" 
+    #   params: 
+    #     itJobName: tidb_ghpr_integration_copr_test
+    #   timeout: 120 
+    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+    #   resources:  
+    #       requests:
+    #           memory: "100Mi"
+    #           cpu: "200m"
+    #       limits:
+    #           memory: "200Mi"
+    #           cpu: "400m"
 
     - taskName: "tidb-intergration-ddl-test" 
       checkerName: "jenkins-it-trigger-check" 
