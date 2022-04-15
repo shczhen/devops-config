@@ -54,35 +54,35 @@ tasks:
     #           memory: "32000Mi"
     #           cpu: "32000m"
 
-    - taskName: "tidb-ut" 
-      checkerName: "ut-cov-check" 
-      params: 
-        shellScript: |
-            export log_level=warn
-            mkdir -p coverage_report
-            make br_unit_test_in_verify_ci || true
-            mv test_coverage/br_cov.unit_test.out coverage_report/br.coverage || true
-            make dumpling_unit_test_in_verify_ci || true
-            mv test_coverage/dumpling_cov.unit_test.out coverage_report/dumpling.coverage || true
-            make gotest_in_verify_ci || true
-            mv test_coverage/tidb_cov.unit_test.out coverage_report/tidb.coverage || true
-        utReport: test_coverage/*.xml
-        covReport: coverage_report/*.coverage
-        coverageRate: 50  
-      timeout: 60 
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-      resources:  
-          requests:
-              memory: "16000Mi"
-              cpu: "8000m"
-          limits:
-              memory: "32000Mi"
-              cpu: "16000m"
-      credentials:
-        - jenkinsID: codecov-token-tidb
-          key: CODECOV_TOKEN
-        - jenkinsID: codecov-api-token
-          key: CODECOV_API_TOKEN
+    # - taskName: "tidb-ut" 
+    #   checkerName: "ut-cov-check" 
+    #   params: 
+    #     shellScript: |
+    #         export log_level=warn
+    #         mkdir -p coverage_report
+    #         make br_unit_test_in_verify_ci || true
+    #         mv test_coverage/br_cov.unit_test.out coverage_report/br.coverage || true
+    #         make dumpling_unit_test_in_verify_ci || true
+    #         mv test_coverage/dumpling_cov.unit_test.out coverage_report/dumpling.coverage || true
+    #         make gotest_in_verify_ci || true
+    #         mv test_coverage/tidb_cov.unit_test.out coverage_report/tidb.coverage || true
+    #     utReport: test_coverage/*.xml
+    #     covReport: coverage_report/*.coverage
+    #     coverageRate: 50  
+    #   timeout: 60 
+    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+    #   resources:  
+    #       requests:
+    #           memory: "16000Mi"
+    #           cpu: "8000m"
+    #       limits:
+    #           memory: "32000Mi"
+    #           cpu: "16000m"
+    #   credentials:
+    #     - jenkinsID: codecov-token-tidb
+    #       key: CODECOV_TOKEN
+    #     - jenkinsID: codecov-api-token
+    #       key: CODECOV_API_TOKEN
 
     # - taskName: "tidb-race" 
     #   checkerName: "ut-check" 
