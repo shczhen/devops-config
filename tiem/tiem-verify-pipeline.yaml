@@ -53,8 +53,8 @@ tasks:
               memory: "8000Mi"
               cpu: "4000m"
           limits:
-              memory: "8000Mi"
-              cpu: "4000m"
+              memory: "16000Mi"
+              cpu: "8000m"
 
     - taskName: "tiem-cyclo" 
       checkerName: "cyclo-check" 
