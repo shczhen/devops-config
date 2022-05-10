@@ -84,29 +84,29 @@ tasks:
     #     - jenkinsID: codecov-api-token
     #       key: CODECOV_API_TOKEN
 
-    # - taskName: "tidb-race" 
-    #   checkerName: "ut-check" 
-    #   params: 
-    #     shellScript: |
-    #         cd ..
-    #         go install github.com/axw/gocov/gocov@latest
-    #         go install github.com/AlekSi/gocov-xml@latest
-    #         cd -
-    #         make tools/bin/ut
-    #         make tools/bin/xprog
-    #         make race
-    #         gocov convert test_coverage/tidb_cov.unit_test | gocov-xml > coverage.xml
-    #     utReport: test_coverage/tidb-junit-report.xml
-    #     covReport: coverage.xml
-    #   timeout: 60 
-    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-    #   resources:  
-    #       requests:
-    #           memory: "4000Mi"
-    #           cpu: "2000m"
-    #       limits:
-    #           memory: "32000Mi"
-    #           cpu: "16000m"
+    - taskName: "tidb-race" 
+      checkerName: "ut-check" 
+      params: 
+        shellScript: |
+            cd ..
+            go install github.com/axw/gocov/gocov@latest
+            go install github.com/AlekSi/gocov-xml@latest
+            cd -
+            make tools/bin/ut
+            make tools/bin/xprog
+            make race
+            gocov convert test_coverage/tidb_cov.unit_test | gocov-xml > coverage.xml
+        utReport: test_coverage/tidb-junit-report.xml
+        covReport: coverage.xml
+      timeout: 60 
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+      resources:  
+          requests:
+              memory: "4000Mi"
+              cpu: "2000m"
+          limits:
+              memory: "32000Mi"
+              cpu: "16000m"
 
     # - taskName: "tidb-leak" 
     #   checkerName: "ut-check" 
@@ -150,26 +150,26 @@ tasks:
               memory: "32000Mi"
               cpu: "20000m"
 
-    # - taskName: "tidb-race-log" 
-    #   checkerName: "ut-check" 
-    #   params: 
-    #     shellScript: |
-    #         cd tools/check
-    #         go build -o ../bin/failpoint-ctl github.com/pingcap/failpoint/failpoint-ctl
-    #         cd ../..
-    #         find $$PWD/ -type d | grep -vE "(\.git|tools)" | xargs tools/bin/failpoint-ctl enable
-    #         go test -timeout 20m -race $(go list ./... | grep -v github.com/pingcap/tidb/cmd)
-    #     utReport: test.xml
-    #     covReport: coverage.xml
-    #   timeout: 60 
-    #   image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
-    #   resources:  
-    #       requests:
-    #           memory: "4000Mi"
-    #           cpu: "2000m"
-    #       limits:
-    #           memory: "32000Mi"
-    #           cpu: "16000m"
+    - taskName: "tidb-race-log" 
+      checkerName: "ut-check" 
+      params: 
+        shellScript: |
+            cd tools/check
+            go build -o ../bin/failpoint-ctl github.com/pingcap/failpoint/failpoint-ctl
+            cd ../..
+            find $$PWD/ -type d | grep -vE "(\.git|tools)" | xargs tools/bin/failpoint-ctl enable
+            go test -timeout 20m -race $(go list ./... | grep -v github.com/pingcap/tidb/cmd)
+        utReport: test.xml
+        covReport: coverage.xml
+      timeout: 60 
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+      resources:  
+          requests:
+              memory: "4000Mi"
+              cpu: "2000m"
+          limits:
+              memory: "32000Mi"
+              cpu: "16000m"
 
     - taskName: "tidb-common-test" 
       checkerName: "jenkins-it-trigger-check" 
