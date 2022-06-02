@@ -4,8 +4,7 @@ defaultRef: master
 triggers:
   pullRequest:
       onBranch:
-      - "release-6.1"
-      - "release-6.0"
+      - "master"
       onComment:
       - "/verify"
       context: jenkins-ticdc/verify
@@ -67,6 +66,27 @@ tasks:
             make unit_test_in_verify_ci
         utReport: cdc-junit-report.xml
         covReport: cdc-coverage.xml
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+      resources:  
+          requests:
+              memory: "8000Mi"
+              cpu: "4000m"
+          limits:
+              memory: "30000Mi"
+              cpu: "16000m"
+      credentials:
+        - jenkinsID: codecov-token-ticdc
+          key: TICDC_CODECOV_TOKEN
+        - jenkinsID: coveralls-token-ticdc
+          key: TICDC_COVERALLS_TOKEN
+
+    - taskName: "engine-ut" 
+      checkerName: "ut-check" 
+      params:  
+        shellScript: |
+            make engine_unit_test_in_verify_ci
+        utReport: engine-junit-report.xml
+        covReport: engine-coverage.xml
       image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
       resources:  
           requests:
