@@ -20,6 +20,8 @@ tasks:
           sudo bash -c 'echo "222.222.95.49 uc.qbox.me" >> /etc/hosts';
           if [ "${TARGET_BRANCH}" = "master" ]; then
             python3 scripts/upload.py output.pdf tidb-dev-en-manual.pdf;
+          elif [ "${TARGET_BRANCH}" = "release-6.1" ]; then
+            python3 scripts/upload.py output.pdf tidb-v6.1-en-manual.pdf;
           elif [ "${TARGET_BRANCH}" = "release-6.0" ]; then
             python3 scripts/upload.py output.pdf tidb-v6.0-en-manual.pdf;
           elif [ "${TARGET_BRANCH}" = "release-5.4" ]; then
