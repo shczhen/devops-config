@@ -329,5 +329,5 @@ tasks:
     #           cpu: "400m"
 
 notify:
-    lark: [purelind, dianqihanwangzi, n0vad3v, zhouqiang-cl, BrianNiu01, VelocityLight]
+    lark: [purelind, BrianNiu01, VelocityLight, derekstrong]
     email: [lifu.wu@pingcap.com, zhouqiang@pingcap.com, brian.niu@pingcap.com, wangcong@pingcap.com, shuke@pingcap.com, alex.quan@pingcap.com]
