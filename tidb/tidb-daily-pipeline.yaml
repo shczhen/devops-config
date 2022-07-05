@@ -150,6 +150,24 @@ tasks:
               memory: "32000Mi"
               cpu: "20000m"
 
+    - taskName: "tidb-chain-bench" 
+      checkerName: "common-check" 
+      params: 
+        shellScript: |
+             /home/jenkins/chain-bench scan --repository-url https://github.com/pingcap/tidb --access-token ${CHAIN_BENCH_TOKEN} -o output.json
+      timeout: 60 
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:chain-bench"
+      credentials:
+        - jenkinsID: chain-bench-token
+          key: CHAIN_BENCH_TOKEN
+      resources:  
+          requests:
+              memory: "8000Mi"
+              cpu: "4000m"
+          limits:
+              memory: "8000Mi"
+              cpu: "4000m"
+
     - taskName: "tidb-race-log" 
       checkerName: "ut-check" 
       params: 
