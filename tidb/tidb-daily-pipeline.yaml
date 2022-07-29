@@ -332,6 +332,20 @@ tasks:
               memory: "200Mi"
               cpu: "400m"
 
+    - taskName: "tidb_ghpr_ingration_enterprise_plugin_test" 
+      checkerName: "jenkins-it-trigger-check" 
+      params: 
+        itJobName: tidb_ghpr_ingration_enterprise_plugin_test
+      timeout: 120 
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"  
+      resources:  
+          requests:
+              memory: "100Mi"
+              cpu: "200m"
+          limits:
+              memory: "200Mi"
+              cpu: "400m"
+
     # - taskName: "tidb-intergration-br-test" 
     #   checkerName: "jenkins-it-trigger-check" 
     #   params: 
