@@ -29,3 +29,22 @@ tasks:
       credentials:
         - jenkinsID: codecov-token-tikv-migration
           key: TIKV_MIGRATION_CODECOV_TOKEN
+
+tasks:
+    - taskName: "cdc-it" 
+      checkerName: "it-check" 
+      params:  
+        shellScript: |
+            cd cdc/
+            make integration_test
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18:latest"
+      resources:  
+          requests:
+              memory: "8000Mi"
+              cpu: "4000m"
+          limits:
+              memory: "30000Mi"
+              cpu: "16000m"
+      credentials:
+        - jenkinsID: codecov-token-tikv-migration
+          key: TIKV_MIGRATION_CODECOV_TOKEN
