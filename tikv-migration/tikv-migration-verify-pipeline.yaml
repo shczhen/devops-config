@@ -30,7 +30,6 @@ tasks:
         - jenkinsID: codecov-token-tikv-migration
           key: TIKV_MIGRATION_CODECOV_TOKEN
 
-tasks:
     - taskName: "cdc-it" 
       checkerName: "it-check" 
       params:  
