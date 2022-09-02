@@ -14,7 +14,7 @@ tasks:
       params:  
         shellScript: |
             make check
-      image: "hub.pingcap.net/jenkins/centos7_golang-1.19:latest"  
+      image: "hub.pingcap.net/jenkins/centos7_golang-1.18.5:latest"  
       resources:  
           requests:
               memory: "1000Mi"
