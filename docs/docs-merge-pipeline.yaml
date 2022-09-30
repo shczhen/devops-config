@@ -20,35 +20,13 @@ tasks:
           sudo bash -c 'echo "222.222.95.49 uc.qbox.me" >> /etc/hosts';
           if [ "${TARGET_BRANCH}" = "master" ]; then
             python3 scripts/upload.py output.pdf tidb-dev-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-6.3" ]; then
-            python3 scripts/upload.py output.pdf tidb-v6.3-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-6.2" ]; then
-            python3 scripts/upload.py output.pdf tidb-v6.2-en-manual.pdf;
           elif [ "${TARGET_BRANCH}" = "release-6.1" ]; then
             python3 scripts/upload.py output.pdf tidb-stable-en-manual.pdf;
             python3 scripts/merge_by_toc.py TOC-tidb-cloud.md doc_cloud.md tidb-cloud;
             scripts/generate_cloud_pdf.sh;
             python3 scripts/upload.py output_cloud.pdf tidbcloud-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-6.0" ]; then
-            python3 scripts/upload.py output.pdf tidb-v6.0-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-5.4" ]; then
-            python3 scripts/upload.py output.pdf tidb-v5.4-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-5.3" ]; then
-            python3 scripts/upload.py output.pdf tidb-v5.3-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-5.2" ]; then
-            python3 scripts/upload.py output.pdf tidb-v5.2-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-5.1" ]; then
-            python3 scripts/upload.py output.pdf tidb-v5.1-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-5.0" ]; then
-            python3 scripts/upload.py output.pdf tidb-v5.0-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-4.0" ]; then
-            python3 scripts/upload.py output.pdf tidb-v4.0-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-3.1" ]; then
-            python3 scripts/upload.py output.pdf tidb-v3.1-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-3.0" ]; then
-            python3 scripts/upload.py output.pdf tidb-v3.0-en-manual.pdf;
-          elif [ "${TARGET_BRANCH}" = "release-2.1" ]; then
-            python3 scripts/upload.py output.pdf tidb-v2.1-en-manual.pdf;
+          elif [[ $TARGET_BRANCH == release-* ]]; then
+            python3 scripts/upload.py output.pdf tidb-v${TARGET_BRANCH##*-}-en-manual.pdf;
           fi
       credentials:
         - jenkinsID: docs-cn-aws-ak
