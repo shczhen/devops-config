@@ -1,15 +1,15 @@
-pipelineName: docs-merge-pipeline 
+pipelineName: docs-merge-pipeline
 repo: pingcap/docs
-defaultRef: master 
+defaultRef: master
 triggers:
   push:
       onBranch:
       - "master"
       - "release-*"
 tasks:
-    - taskName: "docs-build-pdf" 
-      checkerName: "common-check" 
-      params:  
+    - taskName: "docs-build-pdf"
+      checkerName: "common-check"
+      params:
         shellScript: |
           sudo pip3 install boto3
           sudo pip3 install awscli
@@ -44,10 +44,10 @@ tasks:
         - jenkinsID: docs-cn-qiniu-bn
           key: QINIU_BUCKET_NAME
       image: "hub.pingcap.net/jenkins/docs-cn-checker:v0.0.1"
-      resources:  
+      resources:
           requests:
-              memory: "1000Mi"
+              memory: "2000Mi"
               cpu: "500m"
           limits:
-              memory: "2000Mi"
+              memory: "4000Mi"
               cpu: "1000m"
