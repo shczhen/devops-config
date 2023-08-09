@@ -30,7 +30,6 @@ tasks:
           find -name '*.md' | xargs -d '\n' grep -P '\t' && exit 1
           python3 scripts/merge_by_toc.py
           scripts/generate_pdf.sh
-          sudo bash -c 'echo "222.222.95.49 uc.qbox.me" >> /etc/hosts';
           if [ "${TARGET_BRANCH}" = "master" ]; then
             python3 scripts/upload.py output.pdf tidb-dev-en-manual.pdf;
           elif [ "${TARGET_BRANCH}" = "release-7.1" ]; then
