@@ -17,7 +17,6 @@ tasks:
           grep -RP '\t' *  | tee | grep '.md' && exit 1; echo ok
           python3 scripts/merge_by_toc.py en/; python3 scripts/merge_by_toc.py zh/;
           scripts/generate_pdf.sh
-          sudo bash -c 'echo "222.222.95.49 uc.qbox.me" >> /etc/hosts';
           if [ "${TARGET_BRANCH}" = "master" ]; then
             python3 scripts/upload.py output_en.pdf tidb-data-migration-dev-en-manual.pdf;
             python3 scripts/upload.py output_zh.pdf tidb-data-migration-dev-zh-manual.pdf;
